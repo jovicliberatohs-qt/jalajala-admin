@@ -1,0 +1,336 @@
+{% extends "base.html" %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/resorts.css') }}?v=3"
+/>
+{% endblock %} {% block content %}
+
+<!-- ─── Page Header ─────────────────────────────────────── -->
+<div class="page-header">
+  <h1>SERVICES</h1>
+  <span>Resorts</span>
+</div>
+
+<!-- ─── Section Bar ─────────────────────────────────────── -->
+<div class="section-bar">
+  <h2>Resorts</h2>
+  <button
+    class="btn-add"
+    onclick="document.getElementById('addResortModal').style.display = 'flex'"
+  >
+    Add
+  </button>
+</div>
+
+<!-- ─── Resort 1 ─────────────────────────────────────────── -->
+<div class="resort-card">
+  <div class="resort-image-wrap">
+    <img
+      src="{{ url_for('static', filename='images/resort-dome-glamping-cover.png') }}"
+      alt="Dome Glamping"
+      class="resort-cover-img"
+    />
+    <div class="resort-thumbnails">
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-1.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-2.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-3.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-4.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+    </div>
+  </div>
+  <div class="resort-details">
+    <div class="resort-header">
+      <h3>Family Dome Glamping in Rizal</h3>
+      <div class="resort-actions">
+        <button class="btn-edit">✏️ Edit</button>
+        <button class="btn-delete">🗑️ Delete</button>
+      </div>
+    </div>
+    <div class="resort-meta">
+      <div class="stars">
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+      </div>
+      <span class="meta-dot">·</span>
+      <span class="amenity-tag">Free Wi-Fi</span>
+      <span class="amenity-tag">Parking</span>
+      <span class="amenity-tag">Breakfast</span>
+    </div>
+    <p class="resort-address">
+      📍 Pililla - Jala-Jala - Pakil Road, Jala-Jala, Jala-Jala, Philippines,
+      1990 <a href="#" class="view-map-link">View map</a>
+    </p>
+    <p class="resort-hours">🕐 5:00 am – 9:00 pm</p>
+    <p class="resort-description">
+      Get your trip off to great start with a stay at this property, which
+      offers car park free of charge. Conveniently situated in the Jala-Jala,
+      this property puts you to close attractions and interesting dining
+      options.
+    </p>
+    <div class="host-section">
+      <div class="host-row">
+        <span class="host-label">Hosted by Rosemary</span>
+        <span class="verified-badge">✔ verified user</span>
+      </div>
+      <div class="host-contacts">
+        <span>📞 (+63) 123 123 1234</span>
+        <span>✉️ sample@email.com</span>
+      </div>
+    </div>
+    <div class="response-section">
+      <p class="response-title">Details</p>
+      <p class="response-item">Response rate: 100%</p>
+      <p class="response-item">Responds within an hour</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Resort 2 ─────────────────────────────────────────── -->
+<div class="resort-card">
+  <div class="resort-image-wrap">
+    <img
+      src="{{ url_for('static', filename='images/resort-dome-glamping-cover.png') }}"
+      alt="Dome Glamping"
+      class="resort-cover-img"
+    />
+    <div class="resort-thumbnails">
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-1.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-2.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-3.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/resort-dome-glamping-4.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+    </div>
+  </div>
+  <div class="resort-details">
+    <div class="resort-header">
+      <h3>Family Dome Glamping in Rizal</h3>
+      <div class="resort-actions">
+        <button class="btn-edit">✏️ Edit</button>
+        <button class="btn-delete">🗑️ Delete</button>
+      </div>
+    </div>
+    <div class="resort-meta">
+      <div class="stars">
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-filled">★</span>
+        <span class="star-empty">★</span>
+      </div>
+      <span class="meta-dot">·</span>
+      <span class="amenity-tag">Free Wi-Fi</span>
+      <span class="amenity-tag">Parking</span>
+      <span class="amenity-tag">Breakfast</span>
+    </div>
+    <p class="resort-address">
+      📍 Pililla - Jala-Jala - Pakil Road, Jala-Jala, Jala-Jala, Philippines,
+      1990 <a href="#" class="view-map-link">View map</a>
+    </p>
+    <p class="resort-hours">🕐 5:00 am – 9:00 pm</p>
+    <p class="resort-description">
+      Get your trip off to great start with a stay at this property, which
+      offers car park free of charge. Conveniently situated in the Jala-Jala,
+      this property puts you to close attractions and interesting dining
+      options.
+    </p>
+    <div class="host-section">
+      <div class="host-row">
+        <span class="host-label">Hosted by Rosemary</span>
+        <span class="verified-badge">✔ verified user</span>
+      </div>
+      <div class="host-contacts">
+        <span>📞 (+63) 123 123 1234</span>
+        <span>✉️ sample@email.com</span>
+      </div>
+    </div>
+    <div class="response-section">
+      <p class="response-title">Details</p>
+      <p class="response-item">Response rate: 100%</p>
+      <p class="response-item">Responds within an hour</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Add Resort Modal ──────────────────────────────────── -->
+<div class="modal-overlay" id="addResortModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add Resort</h3>
+      <button
+        class="modal-close"
+        onclick="
+          document.getElementById('addResortModal').style.display = 'none'
+        "
+      >
+        ✕
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-col">
+        <div class="form-group">
+          <label>Cover Photo</label>
+          <div class="upload-box">
+            <span class="upload-icon">☁️</span>
+            <p>Drag or drop file here</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" placeholder="Enter title" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea placeholder="Enter description" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" placeholder="Enter address" />
+        </div>
+        <div class="form-group">
+          <label>Star Rating</label>
+          <div class="star-selector" id="starSelector">
+            <span class="star-pick" data-value="1">★</span>
+            <span class="star-pick" data-value="2">★</span>
+            <span class="star-pick" data-value="3">★</span>
+            <span class="star-pick" data-value="4">★</span>
+            <span class="star-pick" data-value="5">★</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-col">
+        <div class="form-group">
+          <label>Photos</label>
+          <div class="upload-box upload-box--tall">
+            <span class="upload-icon">☁️</span>
+            <p>Drag or drop file here</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Amenities</label>
+          <div class="amenities-row">
+            <button type="button" class="amenity-btn">Free Wi-Fi</button>
+            <button type="button" class="amenity-btn">Parking</button>
+            <button type="button" class="amenity-btn">Breakfast</button>
+            <button type="button" class="amenity-btn">Pool</button>
+            <button type="button" class="amenity-btn">AC</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Business Hours</label>
+          <div class="days-row">
+            <button type="button" class="day-btn">Sun</button>
+            <button type="button" class="day-btn">Mon</button>
+            <button type="button" class="day-btn">Tue</button>
+            <button type="button" class="day-btn">Wed</button>
+            <button type="button" class="day-btn">Thu</button>
+            <button type="button" class="day-btn">Fri</button>
+            <button type="button" class="day-btn">Sat</button>
+          </div>
+          <div class="time-row">
+            <input type="time" value="00:00" />
+            <span>to</span>
+            <input type="time" value="00:00" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Host Name</label>
+          <input type="text" placeholder="Enter host name" />
+        </div>
+        <div class="form-group">
+          <label>Contact Number</label>
+          <input type="text" placeholder="e.g. (+63) 123 123 1234" />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="sample@email.com" />
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        class="btn-close"
+        onclick="
+          document.getElementById('addResortModal').style.display = 'none'
+        "
+      >
+        Close
+      </button>
+      <button class="btn-publish">Publish</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── JS ───────────────────────────────────────────────── -->
+<script>
+  document.querySelectorAll(".day-btn").forEach((btn) => {
+    btn.addEventListener("click", () =>
+      btn.classList.toggle("day-btn--active"),
+    );
+  });
+
+  document.querySelectorAll(".amenity-btn").forEach((btn) => {
+    btn.addEventListener("click", () =>
+      btn.classList.toggle("amenity-btn--active"),
+    );
+  });
+
+  const stars = document.querySelectorAll(".star-pick");
+  stars.forEach((star) => {
+    star.addEventListener("click", () => {
+      const val = parseInt(star.dataset.value);
+      stars.forEach((s) => {
+        s.classList.toggle(
+          "star-pick--active",
+          parseInt(s.dataset.value) <= val,
+        );
+      });
+    });
+    star.addEventListener("mouseover", () => {
+      const val = parseInt(star.dataset.value);
+      stars.forEach((s) => {
+        s.classList.toggle(
+          "star-pick--hover",
+          parseInt(s.dataset.value) <= val,
+        );
+      });
+    });
+    star.addEventListener("mouseout", () => {
+      stars.forEach((s) => s.classList.remove("star-pick--hover"));
+    });
+  });
+</script>
+
+{% endblock %}

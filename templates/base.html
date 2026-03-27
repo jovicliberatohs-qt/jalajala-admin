@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jalajala Municipality — {{ page_title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <!-- ─── Sidebar ─────────────────────────────────── -->
+      <aside class="sidebar">
+        <!-- Branding -->
+        <div class="sidebar-brand">
+          <img
+            src="{{ url_for('static', filename='images/logo-left.png') }}"
+            alt="Jalajala Seal"
+            class="sidebar-seal"
+          />
+          <h2>JALAJALA</h2>
+          <p>RIZAL PROVINCE</p>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+          <p class="nav-section-label">DASHBOARD</p>
+          <a
+            href="/dashboard"
+            class="nav-item {{ 'active' if active_page == 'dashboard' else '' }}"
+          >
+            <i data-lucide="home" class="nav-icon"></i>
+            Home
+          </a>
+
+          <p class="nav-section-label">USER MANAGEMENT</p>
+          <a
+            href="/users"
+            class="nav-item {{ 'active' if active_page == 'users' else '' }}"
+          >
+            <i data-lucide="user-round" class="nav-icon"></i>
+            Users
+          </a>
+          <a
+            href="#"
+            class="nav-item {{ 'active' if active_page == 'feedbacks' else '' }}"
+          >
+            <i data-lucide="message-square" class="nav-icon"></i>
+            Feedbacks
+          </a>
+
+          <p class="nav-section-label">SERVICES</p>
+          <a
+            href="/tourist-destinations"
+            class="nav-item {{ 'active' if active_page == 'tourist_destinations' else '' }}"
+          >
+            <i data-lucide="pencil-ruler" class="nav-icon"></i>
+            Tourist Destinations
+          </a>
+          <a
+            href="/resorts"
+            class="nav-item {{ 'active' if active_page == 'resorts' else '' }}"
+          >
+            <i data-lucide="book-open" class="nav-icon"></i>
+            Resorts
+          </a>
+          <a
+            href="/bookings"
+            class="nav-item {{ 'active' if active_page == 'bookings' else '' }}"
+          >
+            <i data-lucide="book-open" class="nav-icon"></i>
+            Bookings
+          </a>
+        </nav>
+
+        <!-- ─── Sidebar Footer ───────────────────────── -->
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <div class="user-avatar">{{ current_user.full_name[0] }}</div>
+            <div class="user-info">
+              <p class="user-name">{{ current_user.full_name }}</p>
+              <p class="user-role">{{ current_user.role }}</p>
+            </div>
+          </div>
+          <a href="/logout" class="btn-logout" title="Logout">
+            <i data-lucide="log-out"></i>
+          </a>
+        </div>
+      </aside>
+
+      <!-- ─── Main Content ──────────────────────────── -->
+      <main class="main-content">{% block content %}{% endblock %}</main>
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+      lucide.createIcons();
+    </script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

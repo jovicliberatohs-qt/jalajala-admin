@@ -1,0 +1,468 @@
+{% extends "base.html" %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/dashboard.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<!-- ─── Page Header ─────────────────────────────────────── -->
+<div class="page-header">
+  <h1>DASHBOARD</h1>
+  <span>Home</span>
+</div>
+
+<!-- ─── Stat Cards ──────────────────────────────────────── -->
+<div class="stat-cards">
+  <div class="stat-card stat-card--red">
+    <div class="stat-card__top">
+      <span class="stat-card__label">Bookings</span>
+      <span class="stat-card__icon">↗</span>
+    </div>
+    <div class="stat-card__number">82</div>
+    <div class="stat-card__footer">
+      <span class="stat-card__change">↑ 25% Increase</span>
+      <span class="stat-card__date">30 Oct 2025</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__top">
+      <span class="stat-card__label">New users</span>
+      <span class="stat-card__icon stat-card__icon--dark">↗</span>
+    </div>
+    <div class="stat-card__number stat-card__number--red">82</div>
+    <div class="stat-card__footer">
+      <span class="stat-card__change stat-card__change--red"
+        >↑ 25% Increase</span
+      >
+      <span class="stat-card__date">30 Oct 2025</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__top">
+      <span class="stat-card__label">Feedbacks</span>
+      <span class="stat-card__icon stat-card__icon--dark">↗</span>
+    </div>
+    <div class="stat-card__number stat-card__number--red">82</div>
+    <div class="stat-card__footer">
+      <span class="stat-card__change stat-card__change--red"
+        >↑ 25% Increase</span
+      >
+      <span class="stat-card__date">30 Oct 2025</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__top">
+      <span class="stat-card__label">Resorts</span>
+      <span class="stat-card__icon stat-card__icon--dark">↗</span>
+    </div>
+    <div class="stat-card__number stat-card__number--red">82</div>
+    <div class="stat-card__footer">
+      <span class="stat-card__change stat-card__change--red"
+        >↑ 25% Increase</span
+      >
+      <span class="stat-card__date">30 Oct 2025</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Visitor Analytics ────────────────────────────────── -->
+<div class="analytics-card">
+  <!-- Header -->
+  <div class="analytics-header">
+    <div class="section-title">
+      <span class="section-icon">📊</span>
+      <h2>Visitor Analytics</h2>
+    </div>
+    <div class="time-filters">
+      <button class="time-btn">Today</button>
+      <button class="time-btn">This Week</button>
+      <button class="time-btn active">This Month</button>
+      <button class="time-btn">This Year</button>
+    </div>
+  </div>
+
+  <!-- Top Stats Row -->
+  <div class="visitor-stats">
+    <div class="visitor-stat visitor-stat--main">
+      <p class="vs-label">TOTAL VISITORS</p>
+      <p class="vs-number vs-number--red">4,821</p>
+      <p class="vs-sub">↑ 12% visitors/month</p>
+    </div>
+    <div class="visitor-stat">
+      <p class="vs-label">MALE</p>
+      <p class="vs-number vs-number--blue">2,634</p>
+      <p class="vs-sub">54.6% total</p>
+    </div>
+    <div class="visitor-stat">
+      <p class="vs-label">FEMALE</p>
+      <p class="vs-number vs-number--pink">2,187</p>
+      <p class="vs-sub">45.4% total</p>
+    </div>
+    <div class="visitor-stat">
+      <p class="vs-label">SENIOR CITIZENS</p>
+      <p class="vs-number vs-number--orange">386</p>
+      <p class="vs-sub">↑ 367 PWD exposure</p>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row">
+    <!-- Gender Breakdown -->
+    <div class="chart-box">
+      <p class="chart-title">GENDER BREAKDOWN</p>
+      <div class="gender-bars">
+        <div class="gender-row">
+          <span class="gender-label">Male</span>
+          <div class="gender-bar-wrap">
+            <div class="gender-bar gender-bar--blue" style="width: 54.6%"></div>
+          </div>
+          <span class="gender-pct">2,634 (54.6%)</span>
+        </div>
+        <div class="gender-row">
+          <span class="gender-label">Female</span>
+          <div class="gender-bar-wrap">
+            <div class="gender-bar gender-bar--pink" style="width: 45.4%"></div>
+          </div>
+          <span class="gender-pct">2,187 (45.4%)</span>
+        </div>
+      </div>
+      <div class="gender-legend">
+        <span class="legend-dot legend-dot--blue"></span> Male 54.9%
+        <span
+          class="legend-dot legend-dot--pink"
+          style="margin-left: 12px"
+        ></span>
+        Female 45.4%
+      </div>
+
+      <!-- Monthly Bar Chart -->
+      <p class="chart-title" style="margin-top: 20px">MONTHLY VISITORS</p>
+      <div class="chart-container-bar">
+        <canvas id="monthlyChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Donut Chart -->
+    <div class="chart-box chart-box--center">
+      <p class="chart-title">GROUP TYPE</p>
+      <div class="donut-wrap">
+        <div class="chart-container-donut">
+          <canvas id="groupChart"></canvas>
+        </div>
+        <div class="donut-legend">
+          <div class="donut-legend-item">
+            <span class="legend-dot" style="background: #e03131"></span>
+            <span>Family</span>
+            <span class="legend-pct">38%</span>
+          </div>
+          <div class="donut-legend-item">
+            <span class="legend-dot" style="background: #1971c2"></span>
+            <span>Couple</span>
+            <span class="legend-pct">28%</span>
+          </div>
+          <div class="donut-legend-item">
+            <span class="legend-dot" style="background: #2f9e44"></span>
+            <span>Groups</span>
+            <span class="legend-pct">24%</span>
+          </div>
+          <div class="donut-legend-item">
+            <span class="legend-dot" style="background: #f59f00"></span>
+            <span>Solo</span>
+            <span class="legend-pct">10%</span>
+          </div>
+        </div>
+      </div>
+      <!-- Group Type Bars -->
+      <div class="group-bars">
+        {% set groups = [ ("Family", "38%", "#e03131"), ("Couple", "28%",
+        "#1971c2"), ("Groups", "24%", "#2f9e44"), ("Solo", "10%", "#f59f00"), ]
+        %} {% for label, pct, color in groups %}
+        <div class="group-bar-row">
+          <span class="group-bar-label">{{ label }}</span>
+          <div class="group-bar-track">
+            <div
+              class="group-bar-fill"
+              style="width: {{ pct }}; background: {{ color }}"
+            ></div>
+          </div>
+          <span class="group-bar-pct">{{ pct }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Age Category -->
+    <div class="chart-box">
+      <p class="chart-title">
+        AGE CATEGORY <span class="chart-sub">This month</span>
+      </p>
+      <div class="age-grid">
+        <div class="age-card age-card--blue">
+          <p class="age-label">CHILDREN</p>
+          <p class="age-number">812</p>
+          <p class="age-sub">16.8% of total</p>
+        </div>
+        <div class="age-card age-card--red">
+          <p class="age-label">ADULTS</p>
+          <p class="age-number">3,121</p>
+          <p class="age-sub">64.7% of total</p>
+        </div>
+        <div class="age-card age-card--orange">
+          <p class="age-label">SENIOR CITIZENS</p>
+          <p class="age-number">386</p>
+          <p class="age-sub">8.0% of total</p>
+        </div>
+        <div class="age-card age-card--green">
+          <p class="age-label">PWD</p>
+          <p class="age-number">502</p>
+          <p class="age-sub">10.4% of total</p>
+        </div>
+      </div>
+      <!-- Age Bar Chart -->
+      <div class="chart-container-age">
+        <canvas id="ageChart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Announcements ────────────────────────────────────── -->
+<div class="dashboard-section">
+  <div class="section-header">
+    <div class="section-title">
+      <span class="section-icon">📢</span>
+      <h2>Announcements</h2>
+    </div>
+    <button class="btn-add">Add</button>
+  </div>
+  <div class="data-table">
+    {% set announcements = [ ("Today", "17:30", "Empowering Environmental Action
+    2025"), ("16 Apr 2025", "13:00", "Announcement"), ("16 Apr 2025", "13:00",
+    "Empowering Environmental Action"), ("16 Apr 2025", "13:00", "Empowering
+    Environmental Action"), ("16 Apr 2025", "13:00", "Empowering Environmental
+    Action"), ] %} {% for date, time, title in announcements %}
+    <div class="table-row">
+      <div class="row-date">
+        <span class="date">{{ date }}</span>
+        <span class="time">{{ time }}</span>
+      </div>
+      <div class="row-title">{{ title }}</div>
+      <div class="row-actions">
+        <button class="btn-edit">✏️ Edit</button>
+        <button class="btn-delete">🗑️ Delete</button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="pagination">
+    <span class="pagination-info">Showing 10 out of 50</span>
+    <div class="pagination-controls">
+      <button>«</button>
+      <button>‹</button>
+      <button class="active">1</button>
+      <span>of 100</span>
+      <button>›</button>
+      <button>»</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Events ───────────────────────────────────────────── -->
+<div class="dashboard-section">
+  <div class="section-header">
+    <div class="section-title">
+      <span class="section-icon">📅</span>
+      <h2>Events</h2>
+    </div>
+    <button
+      class="btn-add"
+      onclick="document.getElementById('addEventModal').style.display = 'flex'"
+    >
+      Add
+    </button>
+  </div>
+  <div class="data-table">
+    {% set events = [ ("Today", "17:30", "Empowering Environmental Action
+    2025"), ("16 Apr 2025", "13:00", "Event Title"), ("16 Apr 2025", "13:00",
+    "Empowering Environmental Action"), ("16 Apr 2025", "13:00", "Empowering
+    Environmental Action"), ("16 Apr 2025", "13:00", "Empowering Environmental
+    Action"), ] %} {% for date, time, title in events %}
+    <div class="table-row">
+      <div class="row-date">
+        <span class="date">{{ date }}</span>
+        <span class="time">{{ time }}</span>
+      </div>
+      <div class="row-title">{{ title }}</div>
+      <div class="row-actions">
+        <button class="btn-edit">✏️ Edit</button>
+        <button class="btn-delete">🗑️ Delete</button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="pagination">
+    <span class="pagination-info">Showing 10 out of 50</span>
+    <div class="pagination-controls">
+      <button>«</button>
+      <button>‹</button>
+      <button class="active">1</button>
+      <span>of 100</span>
+      <button>›</button>
+      <button>»</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Add Event Modal ──────────────────────────────────── -->
+<div class="modal-overlay" id="addEventModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add Event</h3>
+      <button
+        class="modal-close"
+        onclick="
+          document.getElementById('addEventModal').style.display = 'none'
+        "
+      >
+        ✕
+      </button>
+    </div>
+    <div class="form-group">
+      <label>Cover Photo</label>
+      <div class="upload-box">
+        <span class="upload-icon">☁️</span>
+        <p>Drag or drop file here</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" placeholder="Enter title" />
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea placeholder="Enter description" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Event Schedule</label>
+      <input type="date" />
+      <div class="time-row">
+        <input type="time" value="00:00" />
+        <span>to</span>
+        <input type="time" value="00:00" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        class="btn-close"
+        onclick="
+          document.getElementById('addEventModal').style.display = 'none'
+        "
+      >
+        Close
+      </button>
+      <button class="btn-publish">Publish</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Chart.js ─────────────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+  // ── Time filter buttons ──────────────────────────────────
+  document.querySelectorAll(".time-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".time-btn")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // ── Monthly Visitors Bar Chart ───────────────────────────
+  new Chart(document.getElementById("monthlyChart"), {
+    type: "bar",
+    data: {
+      labels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+      datasets: [
+        {
+          data: [320, 410, 380, 520, 490, 610, 580, 700, 650, 821, 760, 480],
+          backgroundColor: "#e03131",
+          borderRadius: 4,
+        },
+      ],
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { display: false, grid: { display: false } },
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 9 }, color: "#aaa" },
+        },
+      },
+      maintainAspectRatio: false,
+    },
+  });
+
+  // ── Group Type Donut Chart ───────────────────────────────
+  new Chart(document.getElementById("groupChart"), {
+    type: "doughnut",
+    data: {
+      labels: ["Family", "Couple", "Groups", "Solo"],
+      datasets: [
+        {
+          data: [38, 28, 24, 10],
+          backgroundColor: ["#e03131", "#1971c2", "#2f9e44", "#f59f00"],
+          borderWidth: 0,
+          hoverOffset: 6,
+        },
+      ],
+    },
+    options: {
+      cutout: "68%",
+      plugins: { legend: { display: false } },
+      maintainAspectRatio: false,
+    },
+  });
+
+  // ── Age Category Bar Chart ───────────────────────────────
+  new Chart(document.getElementById("ageChart"), {
+    type: "bar",
+    data: {
+      labels: ["Adults", "Children", "PWD", "Senior"],
+      datasets: [
+        {
+          data: [3121, 812, 502, 386],
+          backgroundColor: ["#e03131", "#1971c2", "#2f9e44", "#f59f00"],
+          borderRadius: 4,
+        },
+      ],
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { display: false, grid: { display: false } },
+        x: {
+          grid: { display: false },
+          ticks: { font: { size: 10 }, color: "#aaa" },
+        },
+      },
+      maintainAspectRatio: false,
+    },
+  });
+</script>
+
+{% endblock %}

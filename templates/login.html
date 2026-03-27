@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jalajala Municipality — Login</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="login-card">
+        <!-- Header / Branding -->
+        <div class="branding">
+          <img
+            src="{{ url_for('static', filename='images/logo-left.png') }}"
+            alt="Jalajala Seal"
+            class="seal"
+          />
+          <div class="branding-text">
+            <h1>JALAJALA MUNICIPALITY</h1>
+            <p>R I Z A L &nbsp; P R O V I N C E</p>
+          </div>
+          <img
+            src="{{ url_for('static', filename='images/logo-right.png') }}"
+            alt="Rizal Seal"
+            class="seal"
+          />
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="signin-title">SIGN IN</h2>
+
+        <!-- Error Message -->
+        {% if error %}
+        <div class="error-message">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <form action="/login" method="POST" class="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter Password"
+              required
+            />
+            <a href="#" class="forgot-link">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+
+        <p class="register-text">
+          No account yet? <a href="#">Request here</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

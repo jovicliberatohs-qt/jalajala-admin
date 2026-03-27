@@ -1,0 +1,117 @@
+{% extends "base.html" %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/bookings.css') }}"
+/>
+{% endblock %} {% block content %}
+
+<!-- ─── Page Header ─────────────────────────────────────── -->
+<div class="page-header">
+  <h1>SERVICES</h1>
+  <span>Bookings</span>
+</div>
+
+<!-- ─── Table Card ──────────────────────────────────────── -->
+<div class="table-card">
+  <h2 class="table-card__title">BOOKINGS</h2>
+
+  <!-- ─── Toolbar ───────────────────────────────────────── -->
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <div class="search-box">
+        <input
+          type="text"
+          placeholder="Search"
+          id="searchInput"
+          onkeyup="filterTable()"
+        />
+        <span class="search-icon">🔍</span>
+      </div>
+      <button class="btn-filter">⚙ Filter</button>
+    </div>
+  </div>
+
+  <!-- ─── Table ─────────────────────────────────────────── -->
+  <div class="table-wrapper">
+    <table id="bookingsTable">
+      <thead>
+        <tr>
+          <th><input type="checkbox" onclick="toggleAll(this)" /></th>
+          <th>#</th>
+          <th>Resorts</th>
+          <th>User ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Contact Number</th>
+          <th>Registration Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set bookings = [ (1000, "Lakescape Resort", "001userID", "Doe",
+        "sample@email.com", "0000 000 0000", "30 Dec 2024"), (999, "Lakescape",
+        "002userID", "Smith", "sample@email.com", "0000 000 0000", "30 Dec
+        2024"), (998, "Lakescape", "003userID", "Johnson", "sample@email.com",
+        "0000 000 0000", "30 Dec 2024"), (997, "Lakescape", "004userID", "Lee",
+        "sample@email.com", "0000 000 0000", "30 Dec 2024"), (996, "Lakescape",
+        "005userID", "Brown", "sample@email.com", "0000 000 0000", "30 Dec
+        2024"), (995, "Lakescape", "006userID", "White", "sample@email.com",
+        "0000 000 0000", "30 Dec 2024"), (994, "Lakescape", "007userID",
+        "Black", "sample@email.com", "0000 000 0000", "30 Dec 2024"), (993,
+        "Lakescape", "008userID", "Gray", "sample@email.com", "0000 000 0000",
+        "30 Dec 2024"), (992, "Green", "009userID", "Green", "sample@email.com",
+        "0000 000 0000", "30 Dec 2024"), (991, "Adams", "010userID", "Adams",
+        "sample@email.com", "0000 000 0000", "30 Dec 2024"), ] %} {% for num,
+        resort, uid, name, email, contact, reg_date in bookings %}
+        <tr>
+          <td><input type="checkbox" class="row-checkbox" /></td>
+          <td>{{ num }}</td>
+          <td class="bold">{{ resort }}</td>
+          <td>{{ uid }}</td>
+          <td class="bold">{{ name }}</td>
+          <td>{{ email }}</td>
+          <td>{{ contact }}</td>
+          <td>{{ reg_date }}</td>
+          <td>
+            <button class="btn-view">👁️ View</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── Pagination ────────────────────────────────────── -->
+  <div class="pagination">
+    <span class="pagination-info">Showing 10 out of 1000</span>
+    <div class="pagination-controls">
+      <button>«</button>
+      <button>‹</button>
+      <button class="active">1</button>
+      <span>of 100</span>
+      <button>›</button>
+      <button>»</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── JS: Search & Checkbox ───────────────────────────── -->
+<script>
+  function filterTable() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const rows = document.querySelectorAll("#bookingsTable tbody tr");
+    rows.forEach((row) => {
+      row.style.display = row.innerText.toLowerCase().includes(input)
+        ? ""
+        : "none";
+    });
+  }
+
+  function toggleAll(source) {
+    document
+      .querySelectorAll(".row-checkbox")
+      .forEach((cb) => (cb.checked = source.checked));
+  }
+</script>
+
+{% endblock %}

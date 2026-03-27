@@ -1,0 +1,211 @@
+{% extends "base.html" %} {% block extra_css %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/tourist_destinations.css') }}?v=3"
+/>
+{% endblock %} {% block content %}
+
+<!-- ─── Page Header ─────────────────────────────────────── -->
+<div class="page-header">
+  <h1>SERVICES</h1>
+  <span>Tourist Destinations</span>
+</div>
+
+<!-- ─── Section Bar ─────────────────────────────────────── -->
+<div class="section-bar">
+  <h2>Destinations</h2>
+  <button
+    class="btn-add"
+    onclick="document.getElementById('addDestModal').style.display = 'flex'"
+  >
+    Add
+  </button>
+</div>
+
+<!-- ─── Saint Michael ────────────────────────────────────── -->
+<div class="destination-card">
+  <div class="dest-image-wrap">
+    <img
+      src="{{ url_for('static', filename='images/dest-saint-michael-cover.png') }}"
+      alt="Saint Michael"
+      class="dest-cover-img"
+    />
+    <div class="dest-thumbnails">
+      <img
+        src="{{ url_for('static', filename='images/dest-saint-michael-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/dest-saint-michael-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/dest-saint-michael-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/dest-saint-michael-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+    </div>
+  </div>
+  <div class="dest-details">
+    <div class="dest-header">
+      <h3>SAINT MICHAEL THE ARCHANGEL</h3>
+      <div class="dest-actions">
+        <button class="btn-edit">✏️ Edit</button>
+        <button class="btn-delete">🗑️ Delete</button>
+      </div>
+    </div>
+    <p class="dest-address">
+      📍 Ciriaco Villaran Street, Barangay 1st District, Jalajala, Jala-jala,
+      1990 <a href="#" class="view-map-link">View map</a>
+    </p>
+    <p class="dest-hours">🕐 5:00 am – 9:00 pm</p>
+    <p class="dest-description">
+      A bamboo church was constructed by Franciscan Father Saro where people
+      could gather for catechesis and worship in 1676. The bamboo church was
+      replaced by a church of stone more than half a century later, in 1733, and
+      it was around this time that the parish is said to have welcomed the
+      patron for their church and community — St. Michael the Archangel,
+      protector of the people and of the land.
+    </p>
+  </div>
+</div>
+
+<!-- ─── Dragon Wellness Farm ─────────────────────────────── -->
+<div class="destination-card">
+  <div class="dest-image-wrap">
+    <img
+      src="{{ url_for('static', filename='images/dest-dragon-farm-cover.png') }}"
+      alt="Dragon Farm"
+      class="dest-cover-img"
+    />
+    <div class="dest-thumbnails">
+      <img
+        src="{{ url_for('static', filename='images/dest-dragon-farm-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/dest-dragon-farm-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/dest-dragon-farm-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+      <img
+        src="{{ url_for('static', filename='images/dest-dragon-farm-cover.png') }}"
+        alt="thumb"
+        class="thumb"
+      />
+    </div>
+  </div>
+  <div class="dest-details">
+    <div class="dest-header">
+      <h3>DRAGON WELLNESS FARM</h3>
+      <div class="dest-actions">
+        <button class="btn-edit">✏️ Edit</button>
+        <button class="btn-delete">🗑️ Delete</button>
+      </div>
+    </div>
+    <p class="dest-address">
+      📍 Sitio Tanaun, Brgy. Palaypalay, Bayan ng Jala-jala, Lalawigan ng Rizal
+      <a href="#" class="view-map-link">View map</a>
+    </p>
+    <p class="dest-hours">🕐 5:00 am – 9:00 pm</p>
+    <p class="dest-description">
+      Dragon fruit or pitaya in the native language has been one of the famous
+      products in Jalajala, Rizal. Sweet pitayas come in three types, all with
+      leathery, slightly leafy skin: Hylocereus undatus (Pitaya blanca or
+      White-fleshed Pitaya) has red-skinned fruit with white flesh. This is the
+      most commonly seen dragon fruit.
+    </p>
+  </div>
+</div>
+
+<!-- ─── Add Destination Modal ────────────────────────────── -->
+<div class="modal-overlay" id="addDestModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add</h3>
+      <button
+        class="modal-close"
+        onclick="document.getElementById('addDestModal').style.display = 'none'"
+      >
+        ✕
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-col">
+        <div class="form-group">
+          <label>Cover Photo</label>
+          <div class="upload-box">
+            <span class="upload-icon">☁️</span>
+            <p>Drag or drop file here</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" placeholder="Enter title" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea placeholder="Enter description" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="modal-col">
+        <div class="form-group">
+          <label>Photos</label>
+          <div class="upload-box upload-box--tall">
+            <span class="upload-icon">☁️</span>
+            <p>Drag or drop file here</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Business hours</label>
+          <div class="days-row">
+            <button type="button" class="day-btn">Sun</button>
+            <button type="button" class="day-btn">Mon</button>
+            <button type="button" class="day-btn">Tue</button>
+            <button type="button" class="day-btn">Wed</button>
+            <button type="button" class="day-btn">Thu</button>
+            <button type="button" class="day-btn">Fri</button>
+            <button type="button" class="day-btn">Sat</button>
+          </div>
+          <div class="time-row">
+            <input type="time" value="00:00" />
+            <span>to</span>
+            <input type="time" value="00:00" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        class="btn-close"
+        onclick="document.getElementById('addDestModal').style.display = 'none'"
+      >
+        Close
+      </button>
+      <button class="btn-publish">Publish</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll(".day-btn").forEach((btn) => {
+    btn.addEventListener("click", () =>
+      btn.classList.toggle("day-btn--active"),
+    );
+  });
+</script>
+
+{% endblock %}
